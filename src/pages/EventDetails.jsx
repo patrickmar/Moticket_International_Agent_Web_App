@@ -70,7 +70,7 @@ const EventDetails = () => {
           <h3 className="text-lg leading-6 font-medium text-gray-900">
             Event details
           </h3>
-          <p className="mt-1 max-w-2xl text-sm text-[#c10006] font-semibold ">
+          <p className="mt-1 max-w-2xl text-sm text-[#c10006] font-semibold capitalize-first">
             {ticketDetails.message}
           </p>
         </div>
