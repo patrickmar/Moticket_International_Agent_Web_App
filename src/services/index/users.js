@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BaseUrl = process.env.BASEURL;
+// const BaseUrl = process.env.BASEURL;
 export const signup = async ({
   firstname,
   lastname,
@@ -9,13 +9,16 @@ export const signup = async ({
   agentphone,
 }) => {
   try {
-    const { data } = await axios.post(`${BaseUrl}/register`, {
-      firstname,
-      lastname,
-      email,
-      password,
-      agentphone,
-    });
+    const { data } = await axios.post(
+      `https://moloyal.com/test/mosave/script/api/agent/register`,
+      {
+        firstname,
+        lastname,
+        email,
+        password,
+        agentphone,
+      }
+    );
     return data;
   } catch (error) {
     if (error.response && error.response.data.message)
@@ -26,10 +29,13 @@ export const signup = async ({
 
 export const login = async ({ userid, password }) => {
   try {
-    const { data } = await axios.post(`${BaseUrl}/login'`, {
-      userid,
-      password,
-    });
+    const { data } = await axios.post(
+      `https://moloyal.com/test/mosave/script/api/agent/login`,
+      {
+        userid,
+        password,
+      }
+    );
     return data;
   } catch (error) {
     if (error.response && error.response.data.message)

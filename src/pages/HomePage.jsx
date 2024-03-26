@@ -24,7 +24,7 @@ const HomePage = () => {
     try {
       setIsLoading(true); // Set loading state to true
       const response = await fetch(
-        `${BaseUrl}/geteventticket/${verificationCode}`
+        `https://moloyal.com/test/mosave/script/api/agent/geteventticket/${verificationCode}`
       );
       const data = await response.json();
       console.log('Response data:', data);

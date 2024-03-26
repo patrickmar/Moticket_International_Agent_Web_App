@@ -203,7 +203,7 @@ const Register = () => {
                     message: 'Agentphone is required',
                   },
                   minLength: {
-                    value: 10,
+                    value: 11,
                     message: 'Incorrect phone number',
                   },
                   maxLength: {

@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { IoArrowBackCircleOutline } from 'react-icons/io5';
 import ValidationResponse from './ValidationResponse';
 
-const BaseUrl = process.env.BASEURL;
+// const BaseUrl = process.env.BASEURL;
 const EventDetails = () => {
   const location = useLocation();
   const ticketDetails = location.state ? location.state.ticketDetails : null;
@@ -23,13 +23,16 @@ const EventDetails = () => {
       };
 
       // Perform the validation using the API endpoint
-      const response = await fetch(`${BaseUrl}/processeventticket`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(requestBody),
-      });
+      const response = await fetch(
+        `https://moloyal.com/test/mosave/script/api/agent/processeventticket`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(requestBody),
+        }
+      );
 
       // Parse the response
       const data = await response.json();
