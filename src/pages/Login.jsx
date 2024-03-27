@@ -17,6 +17,7 @@ const Login = () => {
       return login({ userid, password });
     },
     onSuccess: (data) => {
+      console.log(data);
       dispatch(userActions.setUserInfo(data));
       localStorage.setItem('account', JSON.stringify(data));
       toast.success('Login successful...');
