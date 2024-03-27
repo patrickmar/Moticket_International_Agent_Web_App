@@ -6,11 +6,12 @@ import ValidationResponse from './ValidationResponse';
 
 const baseURL=process.env.REACT_APP_BASE_URL;
 
-const userState = useSelector((state) => state.user);
-const agentid=userState.userInfo.id;
+
 
 // const BaseUrl = process.env.BASEURL;
 const EventDetails = () => {
+  const userState = useSelector((state) => state.user);
+const agentid=userState.userInfo.id;
   const location = useLocation();
   const ticketDetails = location.state ? location.state.ticketDetails : null;
   const [isLoading, setIsLoading] = useState(false); // State to track loading status
