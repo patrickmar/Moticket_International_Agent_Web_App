@@ -5,7 +5,8 @@ import Register from './pages/Register';
 import HomePage from './pages/HomePage';
 import { Toaster } from 'react-hot-toast';
 import EventDetails from './pages/EventDetails';
-import LoginPage from './pages/LoginPage';
+import Login from './pages/Login';
+// import LoginPage from './pages/LoginPage';
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Navigate to="/login" />} />
-          <Route path="/login" element={<LoginPage />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/verify" element={<HomePage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/event-details" element={<EventDetails />} />
