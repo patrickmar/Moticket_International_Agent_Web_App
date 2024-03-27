@@ -4,6 +4,11 @@ import { useSelector } from 'react-redux';
 import { IoArrowBackCircleOutline } from 'react-icons/io5';
 import ValidationResponse from './ValidationResponse';
 
+const baseURL=process.env.REACT_APP_BASE_URL;
+
+const userState = useSelector((state) => state.user);
+const agentid=userState.userInfo.id;
+
 // const BaseUrl = process.env.BASEURL;
 const EventDetails = () => {
   const location = useLocation();
@@ -11,10 +16,6 @@ const EventDetails = () => {
   const [isLoading, setIsLoading] = useState(false); // State to track loading status
   const [validationResponse, setValidationResponse] = useState(null); // State to hold validation response
 
-  const baseURL=process.env.REACT_APP_BASE_URL;
-
-  const userState = useSelector((state) => state.user);
-  const agentid=userState.userInfo.id;
 
   console.log(agentid);
   // Function to handle validation of ticket
