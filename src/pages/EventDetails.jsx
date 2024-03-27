@@ -20,7 +20,7 @@ const EventDetails = () => {
   console.log(agentid);
   // Function to handle validation of ticket
   const handleValidation = async () => {
-    const userState = useSelector((state) => state.user);
+   
     setIsLoading(true);
     try {
 
