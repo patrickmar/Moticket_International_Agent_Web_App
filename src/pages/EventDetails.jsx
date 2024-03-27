@@ -1,17 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { IoArrowBackCircleOutline } from 'react-icons/io5';
 import ValidationResponse from './ValidationResponse';
 import { useSelector } from 'react-redux';
 
-// const BaseUrl = process.env.BASEURL;
 const EventDetails = () => {
   const location = useLocation();
   const ticketDetails = location.state ? location.state.ticketDetails : null;
   const [isLoading, setIsLoading] = useState(false); // State to track loading status
   const [validationResponse, setValidationResponse] = useState(null); // State to hold validation response
-  // const userData = useSelector((state) => state.user.userInfo); // Get user info from Redux store
-  const navigate = useNavigate();
 
   const baseURL = process.env.REACT_APP_BASE_URL;
 
