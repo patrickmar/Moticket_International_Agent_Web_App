@@ -27,8 +27,6 @@ const Register = () => {
       console.log(error);
     },
   });
- 
-
 
   useEffect(() => {
     if (userState.userInfo) {
@@ -71,7 +69,7 @@ const Register = () => {
             <div>
               <label
                 htmlFor="firstname"
-                className="block mb-2 text-sm font-medium text-white"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
                 First Name
               </label>
@@ -100,7 +98,7 @@ const Register = () => {
             <div>
               <label
                 htmlFor="lastname"
-                className="block mb-2 text-sm font-medium text-white"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
                 Last Name
               </label>
@@ -218,7 +216,7 @@ const Register = () => {
                 {errors?.password ? errors.password.message : null}
               </p>
             </div>
-           
+
             <button
               type="submit"
               className="disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"

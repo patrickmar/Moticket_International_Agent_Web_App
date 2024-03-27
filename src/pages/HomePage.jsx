@@ -11,7 +11,7 @@ const HomePage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const userData = useSelector((state) => state.user.userInfo); // Get user info from Redux store
   const inputRefs = useRef(Array(8).fill(null));
-
+  const userState = useSelector((state) => state.user);
   const navigate = useNavigate();
 
   const handleInputChange = (index, value) => {
@@ -50,14 +50,13 @@ const HomePage = () => {
     }
   };
 
-  // Check if user is logged in, if not, display a message or redirect
-  useEffect(() => {
-    // Check if user is not logged in, navigate to login page
-    if (!userData) {
-      navigate('/login');
-    }
-  }, [userData, navigate]);
-
+  if (!userState.userInfo) {
+    return (
+      <div className="flex justify-center mt-72 font-semibold text-red-500 text-lg">
+        Please log in to access this page.
+      </div>
+    );
+  }
   return (
     <div className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-12">
       <div className="relative bg-white px-6 pt-10 pb-9 shadow-xl mx-auto w-full max-w-lg rounded-2xl">

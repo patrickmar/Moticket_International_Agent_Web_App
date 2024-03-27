@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { IoArrowBackCircleOutline } from 'react-icons/io5';
 import ValidationResponse from './ValidationResponse';
 import { useSelector } from 'react-redux';
@@ -10,18 +10,18 @@ const EventDetails = () => {
   const ticketDetails = location.state ? location.state.ticketDetails : null;
   const [isLoading, setIsLoading] = useState(false); // State to track loading status
   const [validationResponse, setValidationResponse] = useState(null); // State to hold validation response
-  const userData = useSelector((state) => state.user.userInfo); // Get user info from Redux store
+  // const userData = useSelector((state) => state.user.userInfo); // Get user info from Redux store
   const navigate = useNavigate();
 
   const baseURL = process.env.REACT_APP_BASE_URL;
 
   const userState = useSelector((state) => state.user);
-  const agentid = userState.userInfo.id;
+  // const agentid = userState.userInfo.id;
 
-  console.log(agentid);
+  // console.log(agentid);
   // Function to handle validation of ticket
   const handleValidation = async () => {
-    const userState = useSelector((state) => state.user);
+    // const userState = useSelector((state) => state.user);
     setIsLoading(true);
     try {
       // Extract the ticketid from the ticketDetails
@@ -30,7 +30,7 @@ const EventDetails = () => {
       // Prepare the request body
       const requestBody = {
         ticketid: ticketId,
-        agentid: agentid,
+        // agentid: agentid,
       };
 
       // Perform the validation using the API endpoint
@@ -54,12 +54,6 @@ const EventDetails = () => {
       setIsLoading(false);
     }
   };
-  useEffect(() => {
-    // Check if user is not logged in, navigate to login page
-    if (!userData) {
-      navigate('/login');
-    }
-  }, [userData, navigate]);
 
   // Check if ticketDetails is undefined or null
   if (!ticketDetails) {
@@ -79,6 +73,13 @@ const EventDetails = () => {
     return <ValidationResponse message={validationResponse.message} />;
   }
 
+  if (!userState.userInfo) {
+    return (
+      <div className="flex justify-center mt-72 font-semibold text-red-500 text-lg">
+        Please log in to access this page.
+      </div>
+    );
+  }
   // Access the title property
   return (
     <section className="container md:px-12 px-4">
