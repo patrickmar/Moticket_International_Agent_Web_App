@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { IoArrowBackCircleOutline } from 'react-icons/io5';
 import ValidationResponse from './ValidationResponse';
+import { useSelector } from 'react-redux';
 
 // const BaseUrl = process.env.BASEURL;
 const EventDetails = () => {
@@ -9,6 +10,8 @@ const EventDetails = () => {
   const ticketDetails = location.state ? location.state.ticketDetails : null;
   const [isLoading, setIsLoading] = useState(false); // State to track loading status
   const [validationResponse, setValidationResponse] = useState(null); // State to hold validation response
+  const userData = useSelector((state) => state.user.userInfo); // Get user info from Redux store
+  const navigate = useNavigate();
 
   // Function to handle validation of ticket
   const handleValidation = async () => {
@@ -46,6 +49,12 @@ const EventDetails = () => {
       setIsLoading(false);
     }
   };
+  useEffect(() => {
+    // Check if user is not logged in, navigate to login page
+    if (!userData) {
+      navigate('/login');
+    }
+  }, [userData, navigate]);
 
   // Check if ticketDetails is undefined or null
   if (!ticketDetails) {

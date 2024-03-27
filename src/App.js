@@ -1,11 +1,11 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
 import Register from './pages/Register';
-import Login from './pages/Login';
 import HomePage from './pages/HomePage';
 import { Toaster } from 'react-hot-toast';
 import EventDetails from './pages/EventDetails';
+import LoginPage from './pages/LoginPage';
 
 function App() {
   return (
@@ -13,7 +13,8 @@ function App() {
       <div className="">
         <Header />
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/verify" element={<HomePage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/event-details" element={<EventDetails />} />
