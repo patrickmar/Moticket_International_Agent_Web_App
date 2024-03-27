@@ -13,10 +13,14 @@ const EventDetails = () => {
   const userData = useSelector((state) => state.user.userInfo); // Get user info from Redux store
   const navigate = useNavigate();
 
+  const baseURL=process.env.REACT_APP_BASE_URL;
+
   // Function to handle validation of ticket
   const handleValidation = async () => {
     setIsLoading(true);
     try {
+
+     
       // Extract the ticketid from the ticketDetails
       const ticketId = ticketDetails.ticketid;
 
@@ -27,7 +31,7 @@ const EventDetails = () => {
 
       // Perform the validation using the API endpoint
       const response = await fetch(
-        `https://moloyal.com/test/mosave/script/api/agent/processeventticket`,
+        `${baseURL}/agent/processeventticket`,
         {
           method: 'POST',
           headers: {

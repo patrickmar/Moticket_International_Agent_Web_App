@@ -1,4 +1,5 @@
 import axios from 'axios';
+const baseURL=process.env.REACT_APP_BASE_URL;
 
 // const BaseUrl = process.env.BASEURL;
 export const signup = async ({
@@ -9,8 +10,10 @@ export const signup = async ({
   agentphone,
 }) => {
   try {
+
+   
     const { data } = await axios.post(
-      `https://moloyal.com/test/mosave/script/api/agent/register`,
+      `${baseURL}/agent/register`,
       {
         firstname,
         lastname,
@@ -30,7 +33,7 @@ export const signup = async ({
 export const login = async ({ userid, password }) => {
   try {
     const { data } = await axios.post(
-      `https://moloyal.com/test/mosave/script/api/agent/login`,
+      `${baseURL}/agent/login`,
       {
         userid,
         password,

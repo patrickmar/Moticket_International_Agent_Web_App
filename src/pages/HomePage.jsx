@@ -4,6 +4,8 @@ import toast from 'react-hot-toast';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
+const baseURL = process.env.REACT_APP_BASE_URL;
+
 const HomePage = () => {
   const [verificationCode, setVerificationCode] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -30,7 +32,7 @@ const HomePage = () => {
     try {
       setIsLoading(true); // Set loading state to true
       const response = await fetch(
-        `https://moloyal.com/test/mosave/script/api/agent/geteventticket/${verificationCode}`
+        `${baseURL}/agent/geteventticket/${verificationCode}`
       );
       const data = await response.json();
       console.log('Response data:', data);
