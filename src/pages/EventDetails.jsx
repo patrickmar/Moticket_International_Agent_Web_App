@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { IoArrowBackCircleOutline } from 'react-icons/io5';
 import ValidationResponse from './ValidationResponse';
 import { useSelector } from 'react-redux';
@@ -13,33 +13,34 @@ const EventDetails = () => {
   const userData = useSelector((state) => state.user.userInfo); // Get user info from Redux store
   const navigate = useNavigate();
 
-  const baseURL=process.env.REACT_APP_BASE_URL;
+  const baseURL = process.env.REACT_APP_BASE_URL;
 
+  const userState = useSelector((state) => state.user);
+  const agentid = userState.userInfo.id;
+
+  console.log(agentid);
   // Function to handle validation of ticket
   const handleValidation = async () => {
+    const userState = useSelector((state) => state.user);
     setIsLoading(true);
     try {
-
-     
       // Extract the ticketid from the ticketDetails
       const ticketId = ticketDetails.ticketid;
 
       // Prepare the request body
       const requestBody = {
         ticketid: ticketId,
+        agentid: agentid,
       };
 
       // Perform the validation using the API endpoint
-      const response = await fetch(
-        `${baseURL}/agent/processeventticket`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(requestBody),
-        }
-      );
+      const response = await fetch(`${baseURL}/agent/processeventticket`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestBody),
+      });
 
       // Parse the response
       const data = await response.json();
@@ -84,7 +85,7 @@ const EventDetails = () => {
       <div className="bg-white overflow-hidden shadow rounded-lg border mt-32">
         <div className="px-4 py-5 sm:px-6">
           <h3 className="text-lg leading-6 font-medium text-gray-900">
-            Event details
+            Event Details
           </h3>
           <p className="mt-1 max-w-2xl text-sm text-[#c10006] font-semibold capitalize-first">
             {ticketDetails.message}
