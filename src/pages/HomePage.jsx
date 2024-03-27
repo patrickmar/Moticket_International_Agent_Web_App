@@ -32,7 +32,7 @@ const HomePage = () => {
     try {
       setIsLoading(true); // Set loading state to true
       const response = await fetch(
-        `${baseURL}/agent/geteventticket/${verificationCode}`
+        `${baseURL}/agent/geteventticketcode/${verificationCode}`
       );
       const data = await response.json();
       console.log('Response data:', data);
